@@ -35,3 +35,5 @@ services:
       BOOT: mu-cl-resources
     ports:
       - "4080:80"
+  mongodb:
+    image: tutum/mongodb
