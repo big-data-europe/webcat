@@ -4,8 +4,8 @@ services:
     image: tenforce/webcat:0.2.3
     links:
       - identifier:backend
-    ports:
-      - 80:80
+    environment:
+      - VIRTUAL_HOST: "webcat.big-data-europe.aksw.org"
   identifier:
     image: semtech/mu-identifier:1.0.0
     links:
@@ -22,7 +22,7 @@ services:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     ports:
-      - "8890:8890"
+      - VIRTUAL_HOST: "db.webcat.big-data-europe.aksw.org"
     volumes:
       - ./mu/data/db:/data
   resource:
@@ -33,7 +33,3 @@ services:
       - ./mu/config/resources:/config
     environment:
       BOOT: mu-cl-resources
-    ports:
-      - "4080:80"
-  mongodb:
-    image: tutum/mongodb
