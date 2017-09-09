@@ -6,6 +6,7 @@ services:
       - identifier:backend
     environment:
       VIRTUAL_HOST: "webcat.big-data-europe.aksw.org"
+      VIRTUAL_PORT: "80"
   identifier:
     image: semtech/mu-identifier:1.0.0
     links:
