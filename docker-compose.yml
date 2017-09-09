@@ -22,7 +22,7 @@ services:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     ports:
-      - VIRTUAL_HOST: "db.webcat.big-data-europe.aksw.org"
+      VIRTUAL_HOST: "db.webcat.big-data-europe.aksw.org"
     volumes:
       - ./mu/data/db:/data
   resource:
