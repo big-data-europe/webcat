@@ -4,14 +4,8 @@ services:
     image: tenforce/webcat:0.2.3
     links:
       - identifier:backend
-    environment:
-      VIRTUAL_HOST: "webcat.big-data-europe.aksw.org"
-      VIRTUAL_PORT: "80"
     ports:
       - 89:80
-    networks:
-      - bdi
-      - default
     labels:
       - "logging=true"
   identifier:
@@ -49,7 +43,3 @@ services:
       BOOT: mu-cl-resources
     labels:
       - "logging=true"
-networks:
-  bdi:
-    external:
-      name: appbdiide_default
