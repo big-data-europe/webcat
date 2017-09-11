@@ -12,16 +12,22 @@ services:
     networks:
       - bdi
       - default
+    labels:
+      - "logging=true"
   identifier:
     image: semtech/mu-identifier:1.0.0
     links:
       - dispatcher:dispatcher
+    labels:
+      - "logging=true"
   dispatcher:
     image: semtech/mu-dispatcher:1.0.1
     links:
       - resource:resource
     volumes:
       - ./mu/config/dispatcher:/config
+    labels:
+      - "logging=true"
   db:
     image: tenforce/virtuoso:1.0.0-virtuoso7.2.0
     environment:
@@ -31,6 +37,8 @@ services:
       VIRTUAL_HOST: "db.webcat.big-data-europe.aksw.org"
     volumes:
       - ./mu/data/db:/data
+    labels:
+      - "logging=true"
   resource:
     image: semtech/mu-cl-resources:1.10.1
     links:
@@ -39,6 +47,8 @@ services:
       - ./mu/config/resources:/config
     environment:
       BOOT: mu-cl-resources
+    labels:
+      - "logging=true"
 networks:
   bdi:
     external:
