@@ -6,8 +6,6 @@ services:
       - identifier:backend
     ports:
       - 89:80
-    labels:
-      - "logging=true"
   identifier:
     image: semtech/mu-identifier:1.0.0
     links:
@@ -27,12 +25,10 @@ services:
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
-    environment:
-      VIRTUAL_HOST: "db.webcat.big-data-europe.aksw.org"
-    volumes:
-      - ./mu/data/db:/data
     labels:
       - "logging=true"
+    volumes:
+      - ./mu/data/db:/data
   resource:
     image: semtech/mu-cl-resources:1.10.1
     links:
